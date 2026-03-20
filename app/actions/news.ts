@@ -24,6 +24,18 @@ export async function createNews(data: any) {
   }
 }
 
+export async function updateNews(id: string, data: any) {
+  try {
+    await connectToDatabase();
+    await News.findByIdAndUpdate(id, data);
+    revalidatePath("/admin/news");
+    revalidatePath("/");
+    return { success: true };
+  } catch (error: any) {
+    return { success: false, error: error.message };
+  }
+}
+
 export async function deleteNews(id: string) {
   try {
     await connectToDatabase();

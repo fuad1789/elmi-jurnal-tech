@@ -11,8 +11,8 @@ import {
 import { Button } from "@/components/ui/Button";
 
 export const metadata = {
-  title: "Issues | Admin Dashboard",
-  description: "Manage your journal issues.",
+  title: "Nömrələr | Admin İdarə Paneli",
+  description: "Jurnal nömrələrini idarə edin.",
 };
 
 export default async function IssuesPage() {
@@ -24,10 +24,10 @@ export default async function IssuesPage() {
       <div className="flex justify-between items-end">
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold tracking-tight text-slate-900">
-            Issues & Archives
+            Nömrələr və Arxiv
           </h1>
           <p className="text-sm text-slate-500">
-            Create and manage journal issues.
+            Jurnal nömrələrini yaradın və idarə edin.
           </p>
         </div>
         <IssueFormDialog />
@@ -37,18 +37,18 @@ export default async function IssuesPage() {
         <Table>
           <TableHeader className="bg-slate-50">
             <TableRow>
-              <TableHead className="font-semibold text-slate-900">Volume</TableHead>
-              <TableHead className="font-semibold text-slate-900">Number</TableHead>
-              <TableHead className="font-semibold text-slate-900">Year</TableHead>
+              <TableHead className="font-semibold text-slate-900">Cild</TableHead>
+              <TableHead className="font-semibold text-slate-900">Nömrə</TableHead>
+              <TableHead className="font-semibold text-slate-900">İl</TableHead>
               <TableHead className="font-semibold text-slate-900">Status</TableHead>
-              <TableHead className="text-right font-semibold text-slate-900">Actions</TableHead>
+              <TableHead className="text-right font-semibold text-slate-900">Əməliyyatlar</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {issues.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={5} className="text-center h-24 text-slate-500">
-                  No issues found.
+                  Nömrə tapılmadı.
                 </TableCell>
               </TableRow>
             ) : (
@@ -60,11 +60,11 @@ export default async function IssuesPage() {
                   <TableCell>
                     {issue.isCurrent ? (
                       <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
-                        Current
+                        Cari
                       </span>
                     ) : (
                       <span className="inline-flex items-center rounded-full bg-slate-50 px-2 py-1 text-xs font-medium text-slate-600 ring-1 ring-inset ring-slate-500/10">
-                        Archived
+                        Arxivləşdirilmiş
                       </span>
                     )}
                   </TableCell>
@@ -73,7 +73,7 @@ export default async function IssuesPage() {
                       issue={issue}
                       trigger={
                         <Button variant="outline" size="sm" className="h-8">
-                          Edit
+                          Redaktə et
                         </Button>
                       }
                     />
@@ -82,7 +82,7 @@ export default async function IssuesPage() {
                       await import("@/actions/issue.actions").then(m => m.deleteIssue(issue._id));
                     }}>
                       <Button variant="destructive" size="sm" className="h-8">
-                        Delete
+                        Sil
                       </Button>
                     </form>
                   </TableCell>

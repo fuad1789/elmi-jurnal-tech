@@ -24,6 +24,18 @@ export async function createStaff(data: any) {
   }
 }
 
+export async function updateStaff(id: string, data: any) {
+  try {
+    await connectToDatabase();
+    await Staff.findByIdAndUpdate(id, data);
+    revalidatePath("/admin/staff");
+    revalidatePath("/editorial-board");
+    return { success: true };
+  } catch (error: any) {
+    return { success: false, error: error.message };
+  }
+}
+
 export async function deleteStaff(id: string) {
   try {
     await connectToDatabase();

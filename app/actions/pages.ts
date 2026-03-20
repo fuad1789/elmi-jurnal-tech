@@ -22,7 +22,19 @@ export async function createPage(data: any) {
 
     const page = new StaticPage(data);
     await page.save();
-    revalidatePath("/admin/pages");
+    revalidatePath("/admin/static-content");
+    revalidatePath(`/${data.slug}`);
+    return { success: true };
+  } catch (error: any) {
+    return { success: false, error: error.message };
+  }
+}
+
+export async function updatePage(id: string, data: any) {
+  try {
+    await connectToDatabase();
+    await StaticPage.findByIdAndUpdate(id, data);
+    revalidatePath("/admin/static-content");
     revalidatePath(`/${data.slug}`);
     return { success: true };
   } catch (error: any) {
@@ -34,7 +46,7 @@ export async function deletePage(id: string) {
   try {
     await connectToDatabase();
     await StaticPage.findByIdAndDelete(id);
-    revalidatePath("/admin/pages");
+    revalidatePath("/admin/static-content");
     return { success: true };
   } catch (error: any) {
     return { success: false, error: error.message };

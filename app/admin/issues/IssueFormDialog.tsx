@@ -214,12 +214,12 @@ export function IssueFormDialog({ issue, trigger }: Props) {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        {trigger || <Button>Add New Issue</Button>}
+        {trigger || <Button>Yeni Nömrə Əlavə Et</Button>}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px] overflow-hidden">
         <DialogHeader>
           <DialogTitle className="text-2xl font-semibold">
-            {isEditing ? "Edit Issue" : "Create New Issue"}
+            {isEditing ? "Nömrəni Redaktə Et" : "Yeni Nömrə Yarat"}
           </DialogTitle>
           <div className="flex items-center pt-2 pb-4">
              {/* Progress Bubbles */}
@@ -245,7 +245,7 @@ export function IssueFormDialog({ issue, trigger }: Props) {
                     name="volume"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Volume</FormLabel>
+                        <FormLabel>Cild</FormLabel>
                         <FormControl>
                           <Input type="number" {...field} onChange={(e) => field.onChange(parseInt(e.target.value, 10) || "")} />
                         </FormControl>
@@ -258,7 +258,7 @@ export function IssueFormDialog({ issue, trigger }: Props) {
                     name="number"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Number</FormLabel>
+                        <FormLabel>Nömrə</FormLabel>
                         <FormControl>
                           <Input type="number" {...field} onChange={(e) => field.onChange(parseInt(e.target.value, 10) || "")} />
                         </FormControl>
@@ -271,7 +271,7 @@ export function IssueFormDialog({ issue, trigger }: Props) {
                     name="year"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Year</FormLabel>
+                        <FormLabel>İl</FormLabel>
                         <FormControl>
                           <Input type="number" {...field} onChange={(e) => field.onChange(parseInt(e.target.value, 10) || "")} />
                         </FormControl>
@@ -285,9 +285,9 @@ export function IssueFormDialog({ issue, trigger }: Props) {
                   name="title"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Issue Title</FormLabel>
+                      <FormLabel>Nömrənin Başlığı</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g. Special Spring Edition" {...field} />
+                        <Input placeholder="məs. Xüsusi Yaz Nəşri" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -304,9 +304,9 @@ export function IssueFormDialog({ issue, trigger }: Props) {
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Description</FormLabel>
+                      <FormLabel>Təsvir</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="Brief overview of this issue..." className="h-24 resize-none" {...field} />
+                        <Textarea placeholder="Bu nömrəyə qısa baxış..." className="h-24 resize-none" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -317,11 +317,11 @@ export function IssueFormDialog({ issue, trigger }: Props) {
                   name="keywords"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Keywords (Comma separated)</FormLabel>
+                      <FormLabel>Açar Sözlər (Vergüllə ayrılmış)</FormLabel>
                       <FormControl>
-                        <Input placeholder="mathematics, ai, physics" {...field} />
+                        <Input placeholder="riyaziyyat, süni intellekt, fizika" {...field} />
                       </FormControl>
-                      <FormDescription>Used for making the issue easily searchable.</FormDescription>
+                      <FormDescription>Nömrənin asanlıqla axtarılması üçün istifadə olunur.</FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -331,9 +331,9 @@ export function IssueFormDialog({ issue, trigger }: Props) {
                   name="editor"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Guest / Lead Editor</FormLabel>
+                      <FormLabel>Qonaq / Baş Redaktor</FormLabel>
                       <FormControl>
-                        <Input placeholder="Full Name" {...field} />
+                        <Input placeholder="Ad Soyad" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -348,9 +348,9 @@ export function IssueFormDialog({ issue, trigger }: Props) {
                         <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                       </FormControl>
                       <div className="space-y-1 leading-none">
-                        <FormLabel>Set as Current Issue</FormLabel>
+                        <FormLabel>Cari Nömrə Kimi Təyin Et</FormLabel>
                         <FormDescription>
-                          This will override any existing current issue tag globally transparently. 
+                          Bu, mövcud cari nömrə etiketini qlobal olaraq əvəz edəcək.
                         </FormDescription>
                       </div>
                     </FormItem>
@@ -373,13 +373,13 @@ export function IssueFormDialog({ issue, trigger }: Props) {
                       {!coverFile && !isEditing ? (
                         <>
                           <ImageIcon className="mb-2 h-8 w-8 text-slate-400" />
-                          <p className="text-sm font-medium text-slate-600">Click to upload cover image</p>
-                          <p className="text-xs text-slate-500">PNG, JPG up to 2MB</p>
+                          <p className="text-sm font-medium text-slate-600">Qapaq şəklini yükləmək üçün klikləyin</p>
+                          <p className="text-xs text-slate-500">PNG, JPG — maks. 2MB</p>
                         </>
                       ) : (
                         <div className="flex items-center gap-3">
                           <ImageIcon className="h-6 w-6 text-academic-blue" />
-                          <span className="text-sm font-medium">{coverFile ? coverFile.name : 'Existing Cover Saved'}</span>
+                          <span className="text-sm font-medium">{coverFile ? coverFile.name : 'Mövcud Qapaq Saxlanılıb'}</span>
                         </div>
                       )}
                     </div>
@@ -399,7 +399,7 @@ export function IssueFormDialog({ issue, trigger }: Props) {
 
                   {/* PDF Upload UI */}
                   <div className="space-y-2">
-                    <label className="text-sm font-medium leading-none">Full Journal PDF</label>
+                    <label className="text-sm font-medium leading-none">Tam Jurnal PDF</label>
                     <div 
                       onClick={() => pdfInputRef.current?.click()}
                       className="cursor-pointer flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-300 bg-slate-50 p-6 hover:bg-slate-100 transition-colors"
@@ -407,13 +407,13 @@ export function IssueFormDialog({ issue, trigger }: Props) {
                       {!pdfFile && !isEditing ? (
                         <>
                           <UploadCloud className="mb-2 h-8 w-8 text-slate-400" />
-                          <p className="text-sm font-medium text-slate-600">Click to upload core PDF</p>
-                          <p className="text-xs text-slate-500">PDF up to 50MB</p>
+                          <p className="text-sm font-medium text-slate-600">PDF faylını yükləmək üçün klikləyin</p>
+                          <p className="text-xs text-slate-500">PDF — maks. 50MB</p>
                         </>
                       ) : (
                         <div className="flex items-center gap-3">
                           <FileText className="h-6 w-6 text-red-500" />
-                          <span className="text-sm font-medium">{pdfFile ? pdfFile.name : 'Existing PDF Saved'}</span>
+                          <span className="text-sm font-medium">{pdfFile ? pdfFile.name : 'Mövcud PDF Saxlanılıb'}</span>
                         </div>
                       )}
                     </div>
@@ -443,17 +443,17 @@ export function IssueFormDialog({ issue, trigger }: Props) {
                 disabled={step === 1 || isPending}
               >
                 <ChevronLeft className="mr-2 h-4 w-4" />
-                Previous
+                Əvvəlki
               </Button>
 
               {step < 3 ? (
                 <Button type="button" onClick={handleNext}>
-                  Next
+                  Növbəti
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               ) : (
                 <Button type="submit" disabled={isPending}>
-                  {isPending ? "Saving..." : isEditing ? "Save Final Changes" : "Create Issue"}
+                  {isPending ? "Saxlanılır..." : isEditing ? "Dəyişiklikləri Saxla" : "Nömrəni Yarat"}
                 </Button>
               )}
             </div>

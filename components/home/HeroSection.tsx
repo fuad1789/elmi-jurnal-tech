@@ -14,7 +14,13 @@ interface HeroData {
   coverImage?: string;
 }
 
-export function HeroSection() {
+interface HeroSectionProps {
+  currentIssueCover?: string | null;
+  issnPrint?: string | null;
+  issnOnline?: string | null;
+}
+
+export function HeroSection({ currentIssueCover, issnPrint, issnOnline }: HeroSectionProps) {
   const { t } = useLanguage();
   const [hero, setHero] = useState<HeroData | null>(null);
 
@@ -29,10 +35,13 @@ export function HeroSection() {
 
   const title = hero?.title ?? { en: t.hero.title, az: t.hero.title };
   const subtitle = hero?.subtitle ?? { en: t.hero.subtitle, az: t.hero.subtitle };
-  const issn = hero?.issn ?? { print: '2989-3453', electronic: 'E-3012-4567' };
+  const issn = {
+    print: issnPrint || hero?.issn?.print || '2989-3453',
+    electronic: issnOnline || hero?.issn?.electronic || 'E-3012-4567',
+  };
   const buttonText = hero?.buttonText ?? { en: 'Submit an Article', az: 'Məqalə Təqdim Et' };
   const buttonLink = hero?.buttonLink ?? '/about/author-guidelines';
-  const coverImage = hero?.coverImage ?? '';
+  const coverImage = currentIssueCover || hero?.coverImage || '';
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-academic-blue via-academic-purple to-blue-900">

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd /c 'rename \"C:\\\\Users\\\\FUAD\\\\Desktop\\\\Elmi-jurnal-sdu\\\\app\\\\\\(admin\\)\" \"admin\"')",
+      "Bash(powershell -Command \"Rename-Item -Path 'C:\\\\Users\\\\FUAD\\\\Desktop\\\\Elmi-jurnal-sdu\\\\app\\\\\\(admin\\)' -NewName 'admin'\")",
+      "Bash(ls /c/Users/FUAD/Desktop/Elmi-jurnal-sdu/app/\\\\\\(public\\\\\\)/)",
+      "Bash(ls /c/Users/FUAD/Desktop/Elmi-jurnal-sdu/app/\\\\\\(admin\\\\\\)/)",
+      "Bash(ls:*)"
+    ]
+  }
+}

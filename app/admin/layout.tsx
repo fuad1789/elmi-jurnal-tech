@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import { 
-  LayoutDashboard, 
-  FileText, 
-  Archive, 
-  Users, 
-  FileBadge, 
-  Settings 
+import {
+  LayoutDashboard,
+  FileText,
+  Archive,
+  Users,
+  Settings,
+  Newspaper,
+  Mail,
 } from 'lucide-react';
 
 export const metadata = {
@@ -15,12 +16,13 @@ export const metadata = {
 };
 
 const navLinks = [
-  { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'Articles', href: '/articles', icon: FileText },
-  { name: 'Issues & Archives', href: '/issues', icon: Archive },
-  { name: 'Editorial Board', href: '/editorial-board', icon: Users },
-  { name: 'Static Content', href: '/static-content', icon: FileBadge },
-  { name: 'Settings', href: '/settings', icon: Settings },
+  { name: 'İdarə Paneli', href: '/admin/dashboard', icon: LayoutDashboard },
+  { name: 'Məqalələr', href: '/admin/articles', icon: FileText },
+  { name: 'Nömrələr və Arxiv', href: '/admin/issues', icon: Archive },
+  { name: 'Xəbərlər', href: '/admin/news', icon: Newspaper },
+  { name: 'Redaksiya Heyəti', href: '/admin/editorial-board', icon: Users },
+  { name: 'Əlaqə Mesajları', href: '/admin/contact', icon: Mail },
+  { name: 'Parametrlər', href: '/admin/settings', icon: Settings },
 ];
 
 export default function AdminLayout({
@@ -33,12 +35,13 @@ export default function AdminLayout({
       {/* Sidebar - Persistent left navigation */}
       <aside className="fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-slate-200 bg-white shadow-sm md:flex hidden">
         <div className="flex h-16 shrink-0 items-center border-b border-slate-200 px-6">
-          <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
+          <Link href="/admin/dashboard" className="flex items-center gap-2 font-semibold">
             {/* You can replace this with a real Logo later */}
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white">
               <span className="font-bold">EJ</span>
             </div>
             <span className="text-lg tracking-tight text-slate-900">Admin Panel</span>
+
           </Link>
         </div>
         

@@ -1,13 +1,29 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Mail, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
+interface Settings {
+  contactEmail?: string;
+  contactPhone?: string;
+  address?: string;
+  issnPrint?: string;
+  issnOnline?: string;
+}
+
 export function Footer() {
   const { t } = useLanguage();
   const [email, setEmail] = useState('');
+  const [settings, setSettings] = useState<Settings | null>(null);
+
+  useEffect(() => {
+    fetch('/api/settings')
+      .then((r) => r.json())
+      .then((d) => { if (d) setSettings(d); })
+      .catch(() => {});
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,6 +53,18 @@ export function Footer() {
             <p className="text-sm text-gray-400 mb-4">
               Peer-reviewed academic journal publishing high-quality research in Mathematics and Computer Science.
             </p>
+            {(settings?.issnPrint || settings?.issnOnline) && (
+              <div className="text-xs text-gray-500 space-y-1 mb-3">
+                {settings.issnPrint && <p>ISSN (Print): <span className="font-mono text-gray-400">{settings.issnPrint}</span></p>}
+                {settings.issnOnline && <p>ISSN (Online): <span className="font-mono text-gray-400">{settings.issnOnline}</span></p>}
+              </div>
+            )}
+            {settings?.contactEmail && (
+              <a href={`mailto:${settings.contactEmail}`} className="text-xs text-gray-500 hover:text-gray-300 flex items-center gap-1 mb-3">
+                <Mail className="h-3 w-3" />
+                {settings.contactEmail}
+              </a>
+            )}
             <p className="text-xs text-gray-500">
               © {currentYear} {t.footer.allRightsReserved}.
             </p>
