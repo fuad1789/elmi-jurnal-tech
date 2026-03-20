@@ -2,12 +2,13 @@ import { NextResponse } from "next/server";
 import connectToDatabase from "@/lib/db";
 import { Issue } from "@/models/Issue";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     await connectToDatabase();
-    const currentYear = new Date().getFullYear();
-    const issues = await Issue.find({ year: currentYear })
-      .sort({ volume: -1, number: -1 })
+    const issues = await Issue.find({})
+      .sort({ year: -1, volume: -1, number: -1 })
       .limit(2)
       .lean();
     return NextResponse.json(JSON.parse(JSON.stringify(issues)));
