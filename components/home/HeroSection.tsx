@@ -25,7 +25,7 @@ export function HeroSection({ currentIssueCover, issnPrint, issnOnline }: HeroSe
   const [hero, setHero] = useState<HeroData | null>(null);
 
   useEffect(() => {
-    fetch('/api/hero', { cache: 'no-store' })
+    fetch(`/api/hero?t=${Date.now()}`)
       .then((res) => res.json())
       .then((data) => {
         if (data) setHero(data);

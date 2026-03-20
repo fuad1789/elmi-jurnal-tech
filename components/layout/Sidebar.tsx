@@ -27,12 +27,12 @@ export function Sidebar() {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
 
   useEffect(() => {
-    fetch('/api/issues/recent', { cache: 'no-store' })
+    fetch(`/api/issues/recent?t=${Date.now()}`)
       .then((res) => res.json())
       .then((data) => { if (Array.isArray(data)) setRecentIssues(data); })
       .catch(console.error);
 
-    fetch('/api/news', { cache: 'no-store' })
+    fetch(`/api/news?t=${Date.now()}`)
       .then((res) => res.json())
       .then((data) => { if (data) setNewsItems(data.slice(0, 3)); })
       .catch(console.error);
