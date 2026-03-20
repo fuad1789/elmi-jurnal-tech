@@ -100,7 +100,7 @@ export const editorialMemberSchema = z.object({
   name: z.string().min(1, "Ad tələb olunur"),
   role: z.enum(["Chief", "Editor", "Board"]),
   affiliation: z.string().optional(),
-  orderIndex: z.number().int().min(0).default(0),
+  orderIndex: z.number().int().min(0),
 });
 
 export type EditorialMemberFormValues = z.infer<typeof editorialMemberSchema>;
