@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -53,6 +54,7 @@ export function IssueFormDialog({ issue, trigger }: Props) {
   const [step, setStep] = useState(1);
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
+  const router = useRouter();
 
   // Local state to store strictly UI simulated file selections
   const [coverFile, setCoverFile] = useState<File | null>(null);
@@ -152,6 +154,7 @@ export function IssueFormDialog({ issue, trigger }: Props) {
             description: `Jurnal müvəffəqiyyətlə ${isEditing ? "yeniləndi" : "yaradıldı"}!`,
           });
           resetState();
+          router.refresh();
         } else {
           toast({
             title: "Xəta",

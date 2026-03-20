@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { siteSettingsSchema, SiteSettingsFormValues } from "@/lib/schemas";
 import { upsertSiteSettings } from "@/app/actions/siteSettings";
 import {
@@ -25,6 +26,7 @@ interface Props {
 export function SettingsForm({ settings }: Props) {
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
+  const router = useRouter();
 
   const form = useForm<SiteSettingsFormValues>({
     resolver: zodResolver(siteSettingsSchema),
@@ -42,6 +44,7 @@ export function SettingsForm({ settings }: Props) {
       const res = await upsertSiteSettings(data);
       if (res.success) {
         toast({ title: "Uğurlu", description: "Parametrlər saxlanıldı." });
+        router.refresh();
       } else {
         toast({ title: "Xəta", description: res.error, variant: "destructive" });
       }

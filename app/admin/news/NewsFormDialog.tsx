@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { newsFormSchema, NewsFormValues } from "@/lib/schemas";
@@ -38,6 +39,7 @@ export function NewsFormDialog({ newsItem, trigger }: Props) {
   const [preview, setPreview] = useState<string | null>(newsItem?.imageUrl || null);
   const imageInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
+  const router = useRouter();
   const isEditing = !!newsItem;
 
   const form = useForm<NewsFormValues>({
@@ -74,6 +76,7 @@ export function NewsFormDialog({ newsItem, trigger }: Props) {
             description: `Xəbər ${isEditing ? "yeniləndi" : "yaradıldı"}.`,
           });
           setOpen(false);
+          router.refresh();
           if (!isEditing) {
             form.reset();
             setImageFile(null);

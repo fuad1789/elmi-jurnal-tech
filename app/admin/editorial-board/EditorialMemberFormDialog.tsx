@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EditorialMemberFormValues, editorialMemberSchema } from "@/lib/schemas";
@@ -33,6 +34,7 @@ export function EditorialMemberFormDialog({ member, trigger }: Props) {
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
+  const router = useRouter();
 
   const isEditing = !!member;
 
@@ -62,6 +64,7 @@ export function EditorialMemberFormDialog({ member, trigger }: Props) {
         });
         setOpen(false);
         if (!isEditing) form.reset();
+        router.refresh();
       } else {
         toast({
           title: "Xəta",

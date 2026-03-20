@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArticleFormValues, articleFormSchema } from "@/lib/schemas";
@@ -45,6 +46,7 @@ export function ArticleFormDialog({ article, issues, trigger }: Props) {
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const pdfInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
+  const router = useRouter();
 
   const isEditing = !!article;
 
@@ -105,6 +107,7 @@ export function ArticleFormDialog({ article, issues, trigger }: Props) {
           });
           setOpen(false);
           if (!isEditing) form.reset();
+          router.refresh();
         } else {
           toast({
             title: "Xəta",
