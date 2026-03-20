@@ -6,7 +6,9 @@
       "Bash(ls /c/Users/FUAD/Desktop/Elmi-jurnal-sdu/app/\\\\\\(public\\\\\\)/)",
       "Bash(ls /c/Users/FUAD/Desktop/Elmi-jurnal-sdu/app/\\\\\\(admin\\\\\\)/)",
       "Bash(ls:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(npx next:*)",
+      "Bash(ssh root@217.14.97.171 \"cd /var/www/elmi-jurnal && git pull origin main && npm run build && pm2 restart elmi-jurnal\")"
     ]
   }
 }

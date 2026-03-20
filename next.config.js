@@ -9,6 +9,14 @@ const nextConfig = {
       dynamic: 0,
     },
   },
+  async rewrites() {
+    return [
+      {
+        source: '/uploads/:path*',
+        destination: '/api/files/uploads/:path*',
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig
