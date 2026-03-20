@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getNews, deleteNews } from "@/app/actions/news";
 import { NewsFormDialog } from "./NewsFormDialog";
 import {

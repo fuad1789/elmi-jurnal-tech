@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getContactMessages, markMessageRead, deleteMessage } from "@/app/actions/contactMessages";
 import { Button } from "@/components/ui/Button";
 import { Mail, MailOpen, Trash2 } from "lucide-react";

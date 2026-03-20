@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getSiteSettings } from "@/app/actions/siteSettings";
 import { ContactView } from "./ContactView";
 

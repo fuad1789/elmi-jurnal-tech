@@ -8,7 +8,7 @@ export const metadata = {
   description: 'Browse all published issues of the Journal of Sumqait State University.',
 };
 
-export const revalidate = 60; // optionally revalidate every minute if static, but connection is called
+export const dynamic = 'force-dynamic';
 
 export default async function ArchivesPage() {
   await connectToDatabase();

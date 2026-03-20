@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getEditorialMembers } from '@/app/actions/editorialMember';
 import { getSiteSettings } from '@/app/actions/siteSettings';
 import { EditorialBoardView } from './EditorialBoardView';

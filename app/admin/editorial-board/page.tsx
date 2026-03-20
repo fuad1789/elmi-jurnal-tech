@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getEditorialMembers } from "@/app/actions/editorialMember";
 import { deleteEditorialMember } from "@/app/actions/editorialMember";
 import { EditorialMemberFormDialog } from "./EditorialMemberFormDialog";

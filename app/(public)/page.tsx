@@ -1,4 +1,5 @@
 import React from 'react';
+export const dynamic = 'force-dynamic';
 import { HeroSection } from '@/components/home/HeroSection';
 import { ArticleList } from '@/components/home/ArticleList';
 import { Sidebar } from '@/components/layout/Sidebar';
