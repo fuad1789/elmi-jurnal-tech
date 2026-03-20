@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import connectToDatabase from "@/lib/db";
 import { News } from "@/models/News";
 import { NewsDetailView } from "./NewsDetailView";

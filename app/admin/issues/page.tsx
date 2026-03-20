@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getIssues } from "@/actions/issue.actions";
 import { IssueFormDialog } from "./IssueFormDialog";
 import {
