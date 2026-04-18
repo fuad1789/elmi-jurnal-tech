@@ -21,7 +21,7 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ currentIssueCover, issnPrint, issnOnline }: HeroSectionProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [hero, setHero] = useState<HeroData | null>(null);
 
   useEffect(() => {
@@ -84,7 +84,7 @@ export function HeroSection({ currentIssueCover, issnPrint, issnOnline }: HeroSe
               href={buttonLink}
               className="inline-flex items-center gap-2 bg-white text-academic-blue px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
-              {buttonText.en}
+              {buttonText[language]}
               <ArrowRight className="h-5 w-5" />
             </Link>
           </div>
