@@ -36,8 +36,8 @@ export function HeroSection({ currentIssueCover, issnPrint, issnOnline }: HeroSe
   const title = hero?.title ?? { en: t.hero.title, az: t.hero.title };
   const subtitle = hero?.subtitle ?? { en: t.hero.subtitle, az: t.hero.subtitle };
   const issn = {
-    print: issnPrint || hero?.issn?.print || '2989-3453',
-    electronic: issnOnline || hero?.issn?.electronic || 'E-3012-4567',
+    print: issnPrint || hero?.issn?.print || '1680-1245',
+    electronic: issnOnline || hero?.issn?.electronic || '2706-719X',
   };
   const buttonText = hero?.buttonText ?? { en: 'Submit an Article', az: 'Məqalə Təqdim Et' };
   const buttonLink = hero?.buttonLink ?? '/about/author-guidelines';
